@@ -13,36 +13,37 @@ function Categories() {
                 <div className="row">
                     <div className="col-sm-2">
                         <div className="container categorcontain">
-                            <i class="lni lni-mobile"i/>
+                            <i class="lni lni-mobile cateicons"i/>
                             <h5>Phones</h5>
                         </div>
                     </div>
                     <div className="col-sm-2">
                     <div className="container categorcontain">
-                    <i class="lni lni-laptop"></i>
+                    <i class="lni lni-laptop cateicons"></i>
                             <h5>Computer</h5>
                         </div>
                     </div>
                     <div className="col-sm-2">
                     <div className="container categorcontain">
+                         <i class="lni lni-candy cateicons"></i>
                             <h5>Phones</h5>
                         </div>
                     </div>
                     <div className="col-sm-2">
-                    <div className="container categorcontain">
-                    <i class="lni lni-camera"></i>
+                    <div className="container categorcontain selectedcategory">
+                    <i className="lni lni-camera cateicons"></i>
                             <h5>Camera</h5>
                         </div>
                     </div>
                     <div className="col-sm-2">
                     <div className="container categorcontain">
-                    <i class="lni lni-headphone"></i>
+                    <i className="lni lni-headphone cateicons"></i>
                             <h5>Head Phones</h5>
                         </div>
                     </div>
                     <div className="col-sm-2">
                     <div className="container categorcontain">
-                    <i class="lni lni-game"></i>
+                    <i className="lni lni-game cateicons"></i>
                             <h5>Gaming</h5>
                         </div>
                     </div>
