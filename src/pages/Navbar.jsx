@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 
 function Navbar() {
     const favorites = useSelector((state)=>state.favorites)
+    const cartlist = useSelector((state)=>state.cart)
     return (
         <div>
             <>
@@ -37,7 +38,7 @@ function Navbar() {
                             
                           
                              <NavLink to="/favorites"><i className="lni lni-heart heartfav">{favorites.favoriteList.length===0?<div className="whitedot"></div>:<div className="reddot"></div>}</i></NavLink>
-                             <NavLink to="/cart"><i class="lni lni-cart heartfav"></i></NavLink>
+                             <NavLink to="/cart"><i class="lni lni-cart heartfav">{cartlist.cartList.length===0?<div className="whitedot"></div>:<div className="reddot"></div>}</i></NavLink>
                              {/* <img className='profileImagenav' src=" https://img.icons8.com/?size=100&id=85050&format=png&color=000000" alt="" /> */}
                         </form>
                     </div>

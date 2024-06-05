@@ -278,7 +278,8 @@ a:focus {
     background-color: #fff;
     border: none;
     border-radius: 10px;
-    width: 190px;
+    width: 220px;
+    height:300px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
@@ -340,7 +341,7 @@ a:focus {
 
 
 .new-price {
-    font-size: 13px;
+    font-size: 18px;
     font-weight: bold;
     color: red;
 
@@ -457,11 +458,12 @@ a:focus {
 
 
 .rating-star {
-    font-size: 10px !important;
+    font-size: 20px !important;
+    color: yellow;
 }
 
 .rating-number {
-    font-size: 10px;
+    font-size: 20px;
     color: grey;
 
 }
@@ -1151,7 +1153,7 @@ a:focus {
 }
 .innercontainertitle{
     text-align: center;
-    width: 1000px;
+    /* width: 1000px; */
     height: 70px;
     /* background-color: black !important; */
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -1160,15 +1162,15 @@ a:focus {
     margin-top: 20px;
 }
 .cartcontainer{
-    width: 1000px;
+    /* width: 1000px; */
     height: 500px;
     padding: 0px !important;
     margin-top: 20px;
 }
 .innercontain{
     text-align: center;
-    width: 1000px;
-    height: 70px;
+    /* width: 1000px; */
+    height: 100px;
     /* background-color: black !important; */
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     overflow: none;
@@ -1182,4 +1184,44 @@ a:focus {
 .productnamecol{
     height: 70px !important;
     overflow: none !important;
+}
+.imgtitle{
+    max-width: 300px !important;
+    overflow: hidden;
+}
+.itemcount{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.incbtn{
+    border-radius: 50% !important;
+}
+.decbtn{
+    border-radius: 50% !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+.totalcontainer{
+    margin-top: 30px !important;
+    height: 220px !important;
+    width: 500px !important;
+    /* background-color: black !important; */
+    border: 2px solid black;
+    text-align: center;
+}
+.checkoutrow{
+    margin-top: 50px;
+}
+.totalcontainer h3{
+    margin-top: 10px;
+}
+.redmark{
+    color: red;
+}
+.checktotalrow{
+    text-align: right;
+}
+.placeorderbtn{
+    text-align: center !important;
+    margin-left: 100px !important;
 }

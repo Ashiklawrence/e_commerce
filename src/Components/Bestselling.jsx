@@ -1,6 +1,17 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { addtofav, removefromfav } from '../redux/favorites';
+import {addtocart,removefromcart} from '../redux/cart'
+import { useSelector } from 'react-redux';
+import gif1 from '../images/Iphone-spinner-2.gif'
 
-function Bestselling() {
+function Bestselling({props}) {
+    const {isloading,productList} = props
+    const favorites = useSelector((state) => state.favorites)
+    const cart = useSelector((state)=> state.cart)
+    const dispatch = useDispatch()
+    console.log(productList.rating,"rating")
+    const newList = [...productList].sort((a,b)=>a.rating.count-b.rating.count)
   return (
     <>
     <div className="container-fluid">
@@ -19,162 +30,45 @@ function Bestselling() {
     </div>
 
 </div>
-
-<div className="container-fluid productscontainer">
+{isloading? <div className='container align-center loadercontain'><img className='loader' src={gif1} alt="" /></div> :<>
+    <div className="container-fluid productscontainer">
     <div className="row">
-        <div className="col-md-3">
-            <div className="card">
-
-                <div className="image-container">
-
-                    <div className="first">
-
+        {newList.splice(0,6)?.map((values,key)=>(
+                <div className="col-md-2 mt-3" key={key}>
+                <div className="card">
+                    <div className="image-container">
+                        <div className="first">
+                            <div className="d-flex justify-content-between align-items-center">
+                                {favorites.favoriteList.find((obj) => obj.id === values.id) ? <span className='wishlist heartclicked' onClick={() => { dispatch(removefromfav(values.id)) }}><i className="fa fa-heart-o"></i></span> : <span className='wishlist' onClick={() => { dispatch(addtofav(values)) }}><i className="fa fa-heart-o"></i></span>}
+                            </div>
+                        </div>
+                        <img src={values.image} className="img-fluid rounded thumbnail-image" alt='' />
+                    </div>
+                    <div className="product-detail-container p-2">
                         <div className="d-flex justify-content-between align-items-center">
-
-                            <span className="discount">-25%</span>
-                            <span className="wishlist"><i className="fa fa-heart-o"></i></span>
-
-
+                            <h5 className="dress-name">{values.title}</h5>
+                            <div className="d-flex flex-column mb-2">
+                                <span className="new-price">{values.price}</span>
+                            </div>
+                        </div>
+                        <div className="d-flex justify-content-between align-items-center pt-1">
+                        </div>
+                        <div className="d-flex justify-content-between align-items-center pt-1">
+                            <div>
+                                <i className="fa fa-star-o rating-star"></i>
+                                <span className="rating-number">{values.rating.rate}</span>
+                            </div>
+                            {cart.cartList.find((obj)=>obj.id === values.id)?<span className="buy" onClick={()=>dispatch(removefromcart(values.id))}>REMOVE FROM CART+</span>:<span className="buy" onClick={()=>dispatch(addtocart(values))}>ADD TO CART+</span>}
+                            
                         </div>
                     </div>
-
-                    <img src="https://i.imgur.com/8JIWpnw.jpg" className="img-fluid rounded thumbnail-image" alt=''/>
-
-
                 </div>
-
-
-                <div className="product-detail-container p-2">
-
-                    <div className="d-flex justify-content-between align-items-center">
-
-                        <h5 className="dress-name">White traditional long dress</h5>
-
-                        <div className="d-flex flex-column mb-2">
-
-                            <span className="new-price">$3.99</span>
-                            <small className="old-price text-right">$5.99</small>
-                        </div>
-
-                    </div>
-
-
-                    <div className="d-flex justify-content-between align-items-center pt-1">
-
-                        <div className="color-select d-flex ">
-
-                            <input type="button" name="grey" className="btn creme productbtn" />
-                            <input type="button" name="red" className="btn red ml-2 productbtn" />
-                            <input type="button" name="blue" className="btn blue ml-2 productbtn" />
-
-                        </div>
-
-                        <div className="d-flex ">
-
-                            <span className="item-size mr-2 productbtn" type="button">S</span>
-                            <span className="item-size mr-2 productbtn" type="button">M</span>
-                            <span className="item-size productbtn" type="button">L</span>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div className="d-flex justify-content-between align-items-center pt-1">
-                        <div>
-                            <i className="fa fa-star-o rating-star"></i>
-                            <span className="rating-number">4.8</span>
-                        </div>
-
-                        <span className="buy">BUY+</span>
-
-                    </div>
-
-
-
-                </div>
-
             </div>
-        </div>
-        <div className="col-md-3">
-            <div className="card">
-
-                <div className="image-container">
-
-                    <div className="first">
-
-                        <div className="d-flex justify-content-between align-items-center">
-
-                            <span className="discount">-25%</span>
-                            <span className="wishlist"><i className="fa fa-heart-o"></i></span>
-
-
-                        </div>
-                    </div>
-
-                    <img src="https://i.imgur.com/8JIWpnw.jpg" className="img-fluid rounded thumbnail-image" alt=''/>
-
-
-                </div>
-
-
-                <div className="product-detail-container p-2">
-
-                    <div className="d-flex justify-content-between align-items-center">
-
-                        <h5 className="dress-name">White traditional long dress</h5>
-
-                        <div className="d-flex flex-column mb-2">
-
-                            <span className="new-price">$3.99</span>
-                            <small className="old-price text-right">$5.99</small>
-                        </div>
-
-                    </div>
-
-
-                    <div className="d-flex justify-content-between align-items-center pt-1">
-
-                        <div className="color-select d-flex ">
-
-                            <input type="button" name="grey" className="btn creme productbtn" />
-                            <input type="button" name="red" className="btn red ml-2 productbtn" />
-                            <input type="button" name="blue" className="btn blue ml-2 productbtn" />
-
-                        </div>
-
-                        <div className="d-flex ">
-
-                            <span className="item-size mr-2 productbtn" type="button">S</span>
-                            <span className="item-size mr-2 productbtn" type="button">M</span>
-                            <span className="item-size productbtn" type="button">L</span>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div className="d-flex justify-content-between align-items-center pt-1">
-                        <div>
-                            <i className="fa fa-star-o rating-star"></i>
-                            <span className="rating-number">4.8</span>
-                        </div>
-
-                        <span className="buy">BUY +</span>
-
-                    </div>
-
-
-
-                </div>
-
-            </div>
-        </div>
+        ))}
+        
     </div>
-   
-</div>
+</div></>}
+
 
 </>
   )

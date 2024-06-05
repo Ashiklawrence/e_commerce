@@ -8,6 +8,7 @@ import Navbar from './pages/Navbar';
 import Footer from './Components/Footer';
 import Favorites from './pages/Favorites';
 import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route element={<Signup/>} path='/signup' />
         <Route element={<Favorites/>} path ='/favorites'></Route>
         <Route element={<Cart/>} path='/cart'></Route>
+        <Route element={<Checkout/>} path='/checkout'></Route>
       </Routes>
       <Footer></Footer>
     </div>

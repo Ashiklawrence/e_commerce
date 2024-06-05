@@ -1,4 +1,5 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import img1 from "../images/iphone-14-pro-png.png";
 import OwlCarousel from "react-owl-carousel";
@@ -14,6 +15,19 @@ import Newarrival from "../Components/Newarrival";
 import Features from "../Components/Features";
 
 function Home() {
+    const [isloading, setLoading] = useState(true)
+    const [productList, setproductList] = useState([])
+    useEffect(() => {
+        axios.get('https://fakestoreapi.com/products').then((response) => {
+            setLoading(false)
+            const apilist = response.data
+            setproductList(apilist)
+            // console.log('product list', JSON.stringify(productList))
+
+        }).catch((error) => {
+            console.log(error)
+        })
+    }, [])
     return (
         <>
             <section className="topsection">
@@ -122,19 +136,19 @@ function Home() {
                 </div>
             </section>
             <section className="productsection">
-                <Homeproducts></Homeproducts>
+                <Homeproducts props={{'isloading':isloading,'productList':productList}}></Homeproducts>
             </section>
             <section className="categorysection">
                 <Categories></Categories>
             </section>
             <section className="bestsellingsection">
-                <Bestselling></Bestselling>
+                <Bestselling props={{'isloading':isloading,'productList':productList}}></Bestselling>
             </section>
             <section className="bannersection">
                 <Banner></Banner>
             </section>
             <section className="exploresection">
-                <Exploreproducts></Exploreproducts>
+                <Exploreproducts props={{'isloading':isloading,'productList':productList}}></Exploreproducts>
             </section>
             <section className="newsection">
                 <Newarrival></Newarrival>
